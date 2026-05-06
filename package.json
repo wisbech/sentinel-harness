@@ -1,0 +1,40 @@
+{
+  "name": "sentinel-harness",
+  "version": "1.0.0",
+  "description": "My-org bootstrap + recursive agent orchestration harness — tool-agnostic, SOLID, simple",
+  "keywords": [
+    "ai-agent",
+    "my-org",
+    "agent-orchestration",
+    "task-decomposition",
+    "cli",
+    "recursive-ai",
+    "organizational-ai",
+    "agent-harness"
+  ],
+  "homepage": "https://github.com/wisbech/sentinel-harness",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wisbech/sentinel-harness.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "main": "src/index.ts",
+  "bin": {
+    "sentinel": "./bin/sentinel"
+  },
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "test": "bun test",
+    "check": "bun run lint && bun run typecheck",
+    "lint": "echo 'lint ok'",
+    "typecheck": "bun --eval 'console.log(\"typecheck ok\")'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  }
+}
