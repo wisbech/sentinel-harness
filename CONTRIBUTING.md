@@ -2,19 +2,34 @@
 
 Thanks for considering contributing to Sentinel Harness.
 
+## Branching
+
+- `develop` — default branch. All feature work starts here.
+- `main` — production. Merged from `develop` on release.
+- Branch from `develop` for features/fixes. PR into `develop`.
+
+```
+main       ◄── merge only on release
+  ▲
+develop    ◄── feature PRs land here
+  ▲
+feature/xyz
+```
+
 ## Philosophy
 
 - **Simple.** If a feature needs 200 lines, it's too complex for this project.
 - **Tool-agnostic.** Adding a new transport should be 10 lines in transport.ts.
 - **No breaking changes to persona format.** The `## Identity / ## Mission / ## Boundaries` parse contract is stable.
-- **No framework dependencies.** TypeBox and yaml are the only deps. Keep it that way.
+- **No framework dependencies.** Zero runtime deps. `@types/bun` is dev-only.
 
 ## Adding a Transport
 
 1. Add a case in `createTransport()` in `src/transport.ts`
-2. Add the CLI to the detection priority in `detectTransport()`
-3. Add docs in README.md transports section
-4. 15-20 lines of code, max
+2. Add the CLI to the detection list in `detectAvailable()` in `src/config.ts`
+3. Add defaults in `DEFAULTS` and `allTransports()` in `src/config.ts`
+4. Update help text in `printHelp()` in `src/index.ts`
+5. 15-20 lines of code, max
 
 ```typescript
 case "my-tool":
