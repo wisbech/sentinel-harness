@@ -2,6 +2,30 @@
   "name": "sentinel-harness",
   "version": "1.0.0",
   "description": "My-org bootstrap + recursive agent orchestration harness — tool-agnostic, SOLID, simple",
+  "type": "module",
+  "bin": {
+    "sentinel": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "docs",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "dev": "bun run src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target bun --format esm --banner '#!/usr/bin/env bun' && chmod +x dist/index.js",
+    "clean": "rm -rf dist",
+    "test": "bun test",
+    "prepublishOnly": "npm run clean && npm run build && bun test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
   "keywords": [
     "ai-agent",
     "my-org",
@@ -18,22 +42,6 @@
     "url": "https://github.com/wisbech/sentinel-harness.git"
   },
   "license": "MIT",
-  "author": "",
-  "main": "src/index.ts",
-  "bin": {
-    "sentinel": "./bin/sentinel"
-  },
-  "scripts": {
-    "start": "bun run src/index.ts",
-    "test": "bun test",
-    "check": "bun run lint && bun run typecheck",
-    "lint": "echo 'lint ok'",
-    "typecheck": "bun --eval 'console.log(\"typecheck ok\")'"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
   "engines": {
     "bun": ">=1.0.0"
   }
