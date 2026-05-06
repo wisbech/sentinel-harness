@@ -87,27 +87,39 @@ Type your task or 'help' for commands, 'quit' to exit.
 ## Quick Start
 
 ```bash
-# Option 1: Run directly with Bun
+# Install globally
+npm install -g sentinel-harness
+
+# Configure your transport (interactive picker)
+sentinel launch
+
+# Or configure directly
+sentinel launch claude --model claude-sonnet-4-20250514
+sentinel launch pi --model anthropic/claude-sonnet-4-20250514
+sentinel launch ollama --model llama3.1
+
+# Bootstrap a new company structure
+sentinel --bootstrap "Describe what you're building"
+
+# Run in an existing my-org workspace
+cd /path/to/my-org-workspace
+sentinel
+
+# Or run a single task non-interactively
+sentinel "Research AI adoption in financial services"
+```
+
+```bash
+# Alternative: Run directly from source
 git clone https://github.com/wisbech/sentinel-harness.git
 cd sentinel-harness
 bun install
-chmod +x bin/sentinel
-
-# Bootstrap a new company structure
-./bin/sentinel --bootstrap "Describe what you're building"
-
-# Or use in an existing my-org workspace
-cd /path/to/existing-my-org-workspace
-/path/to/sentinel-harness/bin/sentinel
-
-# Option 2: Install globally (coming soon)
-npm install -g sentinel-harness
-sentinel --bootstrap "..."
+./bin/sentinel launch
 ```
 
 **Requirements:**
-- [Bun](https://bun.sh) (runtime)
-- At least one of: `pi`, `claude`, `opencode`, `github-copilot-cli` — or an Anthropic/OpenAI API key as fallback
+- [Bun](https://bun.sh) >= 1.0.0 (runtime)
+- At least one of: `claude`, `pi`, `opencode`, `codex`, `openai`, `copilot`, `hermes` — or Ollama or an Anthropic/OpenAI API key as fallback
 
 ---
 
